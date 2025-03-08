@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="Login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo"><a href="#">AdaptEd</a></div>
+            <ul>
+                <li><ion-icon name="home-outline"></ion-icon>
+                <a href="Home.html">Home</a></li>
+                <li><ion-icon name="people-outline"></ion-icon>
+                <a href="#">About Us</a></li>
+                <li><ion-icon name="call-outline"></ion-icon>
+                <a href="#">Contact</a></li>
+                <li><button onclick="location.href='Login.html'">Login</button></li>
+                <li><button onclick="location.href='register.html'">Register</button></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section class="login-section">
+        <!-- Left Side: Login Form -->
+        <div class="form-box">
+            <div class="form-value">
+                <form action="">
+                    <h2>Login</h2>
+                    <div class="inputbox">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" id="email" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" id="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="forget">
+                        <label><input type="checkbox"> Remember Me </label>
+                        <a href="#">Forget Password?</a>
+                    </div>
+                    <button type="submit">Login</button>
+                    <div class="register">
+                        <p>Don't Have An Account? <a href="Register.html">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Right Side: Image -->
+        <div class="image-container">
+            <img src="Educatin.png" alt="Education">
+        </div>
+    </section>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Navigation Bar */
+.navbar {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(215, 215, 215, 0.118); /* Transparent effect */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.navdiv {
+    display: flex;
+    align-items: Left;
+    justify-content: Left;
+    width: 80%;
+}
+
+/* Logo On Left */
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    flex-grow: 1; 
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Navigation Links */
+.navdiv ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navdiv ul li {
+    display: inline;
+}
+
+.navdiv ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.navdiv ul li a:hover {
+    color: #f1f1f1;
+    text-decoration: underline;
+}
+
+/* Buttons */
+.navdiv ul li button {
+    background: transparent;
+    border: 2px solid white;
+    padding: 8px 16px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.navdiv ul li button:hover {
+    background: white;
+    color: black;
+}
+
+/* Body Section */
+section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: url('Wallpaper.jpeg') no-repeat center center/cover;
+    padding-top: 100px; /* Adjusted for navbar */
+}
+
+/* Left side: Login Form */
+.form-box {
+    position: relative;
+    width: 410px;
+    height: 520px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15%;
+}
+
+/* Headings */
+h2 {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+
+/* Input Fields */
+.inputbox {
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid #fff;
+}
+
+.inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -5px;
+}
+
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.inputbox ion-icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    top: 20px;
+}
+
+/* Remember Me & Forgot Password */
+.forget {
+    margin: -15px 0 15px;
+    font-size: 0.9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.forget label input {
+    margin-right: 3px;
+}
+
+.forget a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.forget a:hover {
+    text-decoration: underline;
+    color: rgb(239, 255, 254);
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: rgb(239, 255, 254);
+}
+
+/* Register Section */
+.register {
+    font-size: 0.9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.register p a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.register p a:hover {
+    text-decoration: underline;
+    color: rgb(239, 255, 254);
+}
+
+/* Right Side: Image */
+.image-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    section {
+        flex-direction: column;
+        padding-top: 60px; /* Adjust for navbar */
+    }
+
+    .form-box {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .image-container {
+        width: 100%;
+    }
+}
