@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Navigation Bar */
+.navbar {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(215, 215, 215, 0.118); /* Transparent effect */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.navdiv {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 80%;
+}
+
+/* Logo On Left */
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    flex-grow: 1; 
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Navigation Links */
+.navdiv ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navdiv ul li {
+    display: inline;
+}
+
+.navdiv ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    transition:all 0.3s ease;
+}
+
+.navdiv ul li a:hover {
+    color: #f1f1f1;
+    text-decoration: underline;
+}
+
+.navdiv ul li a {
+    transition: transform 0.3s ease;
+}
+
+.navdiv ul li a:hover {
+    transform: scale(1.1);
+}
+
+.navbar {
+    transform: translateY(-100%);
+    animation: slideDown 0.9s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Buttons */
+.navdiv ul li button {
+    background: transparent;
+    border: 2px solid white;
+    padding: 8px 16px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.navdiv ul li button:hover {
+    background: white;
+    color: black;
+}
+
+body {
+    background-image: url('Back\ cover.jpg'); /* Replace with your image file */
+    background-size: cover;  /* Covers the whole page */
+    background-position: center;  /* Centers the image */
+    background-attachment: fixed; /* Keeps image fixed when scrolling */
+}
+
+/* Explore Section with Glass Effect */
+.explore-section {
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent */
+    border-radius: 20px;
+    backdrop-filter: blur(10px); /* Glass Blur Effect */
+    -webkit-backdrop-filter: blur(10px);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    text-align: left;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Video Container for Horizontal Scrolling */
+.video-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+}
+
+/* Hide Scrollbar */
+.video-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Video Boxes */
+.video-box {
+    min-width: 300px;
+    background: transparent; /* No glass effect on videos */
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Video Element */
+.video-box video {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Video Titles */
+.video-box p {
+    margin-top: 10px;
+    font-size: 1em;
+    color: rgb(255, 255, 255);
+}
+
+/* Photo Container for Horizontal Scrolling */
+.photo-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+}
+
+/* Hide Scrollbar */
+.photo-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Photo Boxes */
+.photo-box {
+    min-width: 250px;
+    background: transparent;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Photo Styling */
+.photo-box img {
+    width: 100%;
+    border-radius: 20px; /* Soft Corners */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Image Titles */
+.photo-box p {
+    margin-top: 10px;
+    font-size: 1em;
+    color: white;
+}
+
+
+
+
+/* Keyframes for Pop Effect (Scale-in) */
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keyframes for Fade Effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply Different Effects Alternately */
+.photo-box:nth-child(odd), .video-box:nth-child(even) {
+    opacity: 0;
+    animation: popIn 1s ease-in-out forwards;
+}
+
+.photo-box:nth-child(even), .video-box:nth-child(odd) {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* Staggered Animation Delay */
+.photo-box:nth-child(1), .video-box:nth-child(1) { animation-delay: 0.2s; }
+.photo-box:nth-child(2), .video-box:nth-child(2) { animation-delay: 0.4s; }
+.photo-box:nth-child(3), .video-box:nth-child(3) { animation-delay: 0.6s; }
+.photo-box:nth-child(4), .video-box:nth-child(4) { animation-delay: 0.8s; }
+
+/* Smooth Scrolling Effect */
+.video-container, .photo-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+    perspective: 1000px;
+}
+
+/* Hide Scrollbar */
+.video-container::-webkit-scrollbar, .photo-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hover Effect - Slight Scale */
+.video-box:hover, .photo-box:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Video Styling */
+.video-box video {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Photo Styling */
+.photo-box img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Image & Video Titles - Always Visible */
+.photo-box p, .video-box p {
+    margin-top: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+    opacity: 1; /* Always visible */
+    transition: opacity 0.3s ease-in-out;
+}

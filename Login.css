@@ -24,8 +24,8 @@
 
 .navdiv {
     display: flex;
-    align-items: Left;
-    justify-content: Left;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 80%;
 }
 
@@ -60,12 +60,34 @@
     color: white;
     font-size: 1em;
     font-weight: 500;
-    transition: 0.3s;
+    transition:all 0.3s ease;
 }
 
 .navdiv ul li a:hover {
     color: #f1f1f1;
     text-decoration: underline;
+}
+
+.navdiv ul li a {
+    transition: transform 0.3s ease;
+}
+
+.navdiv ul li a:hover {
+    transform: scale(1.1);
+}
+
+.navbar {
+    transform: translateY(-100%);
+    animation: slideDown 0.9s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 /* Buttons */
@@ -109,6 +131,14 @@ section {
     justify-content: center;
     align-items: center;
     margin-left: 15%;
+    animation: float 3s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0px); }
 }
 
 /* Headings */
@@ -132,7 +162,7 @@ h2 {
     left: 5px;
     transform: translateY(-50%);
     color: #fff;
-    font-size: 1em;
+    font-size: 0.9em;
     pointer-events: none;
     transition: 0.3s;
 }
@@ -160,6 +190,7 @@ input:valid ~ label {
     font-size: 1.2em;
     top: 20px;
 }
+
 
 /* Remember Me & Forgot Password */
 .forget {
@@ -197,9 +228,11 @@ button {
     font-size: 1em;
     font-weight: 600;
     transition: 0.3s;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 button:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
     background: rgb(239, 255, 254);
 }
 
@@ -224,16 +257,18 @@ button:hover {
 
 /* Right Side: Image */
 .image-container {
-    width: 50%;
-    display: flex;
-    justify-content: center;
+    width: 30%; /* Slightly smaller */
+    margin-left: auto; /* Centers it better */
+    margin-right: 5%; /* Moves it slightly right */
 }
 
 .image-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 2px;
+    max-width: 75%; /* Makes it smaller */
+    border-radius: 15px; /* Softer border */
+    transform: translateX(10px); /* Adjust placement */
 }
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -249,5 +284,18 @@ button:hover {
 
     .image-container {
         width: 100%;
+    }
+}
+
+body {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 1;
     }
 }
