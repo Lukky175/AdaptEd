@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnEz - Sign Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+    .navbar {
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(215, 215, 215, 0.118); /* Transparent effect */
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 100;
+    }
+    
+    .navdiv {
+        display: flex;
+        align-items: center;
+        justify-content: spa;
+        width: 80%;
+    }
+    
+    
+    /* Logo On Left */
+    .logo {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: white;
+        text-align: left;
+        flex-grow: 1; 
+    }
+    
+    .logo a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    /* Navigation Links */
+    .navdiv ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+    
+    .navdiv ul li {
+        display: inline;
+    }
+    
+    .navdiv ul li a {
+        text-decoration: none;
+        color: white;
+        font-size: 1em;
+        font-weight: 500;
+        transition:all 0.3s ease;
+    }
+    
+    .navdiv ul li a:hover {
+        color: #f1f1f1;
+        text-decoration: underline;
+    }
+    
+    .navdiv ul li a {
+        transition: transform 0.3s ease;
+    }
+    
+    .navdiv ul li a:hover {
+        transform: scale(1.1);
+    }
+    
+    .navbar {
+        transform: translateY(-100%);
+        animation: slideDown 0.9s ease-out forwards;
+    }
+    
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+        }
+        to {
+            transform: translateY(0);
+        }
+    }
+    
+    /* Buttons */
+    .navdiv ul li button {
+        background: transparent;
+        border: 2px solid white;
+        padding: 8px 16px;
+        color: white;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: 0.3s;
+    }
+    .center-text {
+        flex-grow: 1;
+        text-align: center;
+    }
+    .navdiv ul li button:hover {
+        background: white;
+        color: black;
+    }
+        :root {
+            --discord-dark: #36393f;
+            --discord-darker: #2f3136;
+            --discord-darkest: #202225;
+            --discord-light: #dcddde;
+            --discord-purple: #5865f2;
+            --discord-purple-hover: #4752c4;
+            --discord-green: #3ba55c;
+            --discord-red: #ed4245;
+            --discord-gray: #72767d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--discord-darker);
+            color: var(--discord-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .auth-card {
+            background-color: var(--discord-dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .auth-card:hover {
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--discord-purple);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--discord-purple-hover);
+        }
+
+        input {
+            background-color: var(--discord-darkest);
+            color: var(--discord-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        input:focus {
+            border-color: var(--discord-purple);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.3);
+        }
+
+        .alert {
+            background-color: rgba(237, 66, 69, 0.1);
+            border: 1px solid var(--discord-red);
+            color: var(--discord-red);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--discord-darkest);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--discord-gray);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--discord-purple);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar">
+        <div class="navdiv">
+          <div class="logo"><a href="#">AdaptEd</a></div>
+          <div class="center-text"><h5>Adaptin' the way you learn!</h5></div>
+          <ul>
+            <li><ion-icon name="people-outline"></ion-icon><a href="#">About Us</a></li>
+            <li><ion-icon name="call-outline"></ion-icon><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex items-center justify-center py-12 px-4">
+        <div class="auth-card w-full max-w-md p-8">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-white">Create Account</h2>
+                <p class="text-gray-400 mt-2">Join LearnEz to start your learning journey</p>
+            </div>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert rounded-md p-4 mb-6">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <form action="/signup" method="POST" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium mb-2">Full Name</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="w-full px-4 py-2 rounded-md" 
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="w-full px-4 py-2 rounded-md" 
+                        placeholder="Enter your email"
+                        required
+                    >
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium mb-2">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="w-full px-4 py-2 rounded-md" 
+                        placeholder="Create a password"
+                        required
+                        minlength="6"
+                    >
+                </div>
+                <div>
+                    <label for="confirm_password" class="block text-sm font-medium mb-2">Confirm Password</label>
+                    <input 
+                        type="password" 
+                        id="confirm_password" 
+                        name="confirm_password" 
+                        class="w-full px-4 py-2 rounded-md" 
+                        placeholder="Confirm your password"
+                        required
+                        minlength="6"
+                    >
+                </div>
+                <div>
+                    <button type="submit" class="w-full btn-primary text-white font-medium py-2 px-4 rounded-md">
+                        Sign Up
+                    </button>
+                </div>
+            </form>
+
+            <div class="text-center mt-6">
+                <p class="text-gray-400">
+                    Already have an account? 
+                    <a href="/login" class="text-blue-400 hover:underline">Sign in</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 LearnEz. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

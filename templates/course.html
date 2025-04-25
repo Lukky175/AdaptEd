@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnEz - {{ topic_title }} Course</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+            .navbar {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(215, 215, 215, 0.118); /* Transparent effect */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.navdiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1600px;
+    position: relative;
+}
+
+
+/* Logo On Left */
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+    text-align: left;
+    flex-grow: 1;
+    
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Navigation Links */
+.navdiv ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.navdiv ul li {
+    display: inline;
+}
+
+.navdiv ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    font-weight: 500;
+    transition:all 0.3s ease;
+}
+
+.navdiv ul li a:hover {
+    color: #f1f1f1;
+    text-decoration: underline;
+}
+
+.navdiv ul li a {
+    transition: transform 0.3s ease;
+}
+
+.navdiv ul li a:hover {
+    transform: scale(1.1);
+}
+
+.navbar {
+    transform: translateY(-100%);
+    animation: slideDown 0.9s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Buttons */
+.navdiv ul li button {
+    background: transparent;
+    border: 2px solid white;
+    padding: 8px 16px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+.center-text {
+    flex-grow: 1;
+    text-align: center;
+}
+.navdiv ul li button:hover {
+    background: white;
+    color: black;
+}
+        :root {
+            --discord-dark: #36393f;
+            --discord-darker: #2f3136;
+            --discord-darkest: #202225;
+            --discord-light: #dcddde;
+            --discord-purple: #5865f2;
+            --discord-purple-hover: #4752c4;
+            --discord-green: #3ba55c;
+            --discord-red: #ed4245;
+            --discord-gray: #72767d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--discord-darker);
+            color: var(--discord-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-link {
+            position: relative;
+            color: var(--discord-light);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--discord-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            opacity: 1;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            opacity: 1;
+        }
+
+        .course-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .course-content {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 350px;
+            background-color: var(--discord-dark);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 180px);
+        }
+        
+        .sidebar-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: var(--discord-darkest);
+            padding: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .video-list {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .video-player {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: var(--discord-darkest);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .progress-text {
+            position: absolute;
+            top: -20px;
+            right: 0;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--discord-light);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--discord-purple) 0%, #7289da 100%);
+            transition: width 0.5s ease;
+            box-shadow: 0 0 5px rgba(88, 101, 242, 0.5);
+        }
+
+        .video-item {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .video-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background-color: transparent;
+            transition: background-color 0.2s ease;
+        }
+
+        .video-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .video-item.active {
+            background-color: rgba(88, 101, 242, 0.2);
+        }
+        
+        .video-item.active::before {
+            background-color: var(--discord-purple);
+        }
+
+        .video-item.completed::before {
+            background-color: var(--discord-green);
+        }
+
+        .video-item.active.completed::before {
+            background-color: var(--discord-purple);
+        }
+
+        .video-title {
+            margin-left: 12px;
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background-color: var(--discord-darkest);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .custom-checkbox:checked {
+            background-color: var(--discord-green);
+            border-color: var(--discord-green);
+        }
+
+        .custom-checkbox:checked::after {
+            content: '\2713';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+        }
+
+        .embed-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--discord-darkest);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--discord-gray);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--discord-purple);
+        }
+    </style>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <nav class="navbar">
+        <div class="navdiv">
+          <!-- Left Section: Logo -->
+          <div class="logo"><a href="/home">AdaptEd</a></div>
+      
+          <!-- Center Section: Tagline -->
+          <div class="center-text"><h5>Adaptin' the way you learn!</h5></div>
+          <ul>
+            <li><a href="/home"><ion-icon name="home-outline"></ion-icon> Home</a></li>
+            <li><a href="/tutor"><ion-icon name="school-outline"></ion-icon> AI Tutor</a></li>
+            <li><a href="/whiteboard"><ion-icon name="create-outline"></ion-icon> Whiteboard</a></li>
+            <li><a href="/graphing"><ion-icon name="analytics-outline"></ion-icon> Graphing</a></li>
+            
+          </ul>
+      
+          <!-- Right Section: User Info + Buttons -->
+          <div class="right-menu">
+            <span style="color:white;">{{ user_name }}</span>
+            <a href="/logout"><button>Logout</button></a>
+          </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+<div class="course-container">
+    <!-- Course Header -->
+    <div class="bg-gray-800 py-6 px-8 shadow-md">
+        <div class="container mx-auto">
+            <div class="flex items-center mb-4">
+                <a href="#" class="pl-4 text-blue-400 hover:underline mr-4 flex items-center">
+                    <i class=""></i>
+                    -
+                </a>
+                </div>
+                <h1 class="text-3xl font-bold text-white mb-2">{{ topic_title }}</h1>
+                
+                {% if error %}
+                    <div class="bg-red-600 bg-opacity-20 border border-red-600 text-red-100 px-4 py-3 rounded mb-4">
+                        <p>There was an error loading the course content. Please try again later.</p>
+                    </div>
+                {% else %}
+                    <div class="flex items-center">
+                        <div class="w-full max-w-xl">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: {{ progress_percentage }}%;"></div>
+                                <div class="progress-text">{{ progress_percentage }}% Complete</div>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <a href="/home" class="pl-4 text-blue-400 hover:underline mr-4 flex items-center">
+                                    <i class="fas fa-arrow-left mr-2"></i>
+                                    Back to Home
+                                </a>
+                                </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        
+        {% if not error and playlist %}
+            <!-- Course Content -->
+            <div class="course-content">
+                <!-- Sidebar with Video List -->
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <h2 class="text-xl font-semibold">Course Content</h2>
+                        <div class="flex justify-between items-center mt-1">
+                            <p class="text-sm text-gray-400">{{ playlist.videos|length }} videos</p>
+                            <div class="bg-blue-600 text-xs text-white px-2 py-1 rounded-full">{{ progress_percentage }}% Complete</div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-list">
+                        {% for video in playlist.videos %}
+                            <div class="video-item {% if video.id == current_video %}active{% endif %} {% if video.id in completed %}completed{% endif %}" 
+                                 data-video-id="{{ video.id }}">
+                                <div class="checkbox-container">
+                                    <input type="checkbox" class="custom-checkbox" 
+                                           {% if video.id in completed %}checked{% endif %}
+                                           data-video-id="{{ video.id }}">
+                                </div>
+                                <div class="video-title">{{ video.title }}</div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- Video Player -->
+                <div class="video-player">
+                    <h2 class="text-2xl font-semibold mb-4">
+                        {% for video in playlist.videos %}
+                            {% if video.id == current_video %}
+                                {{ video.title }}
+                            {% endif %}
+                        {% endfor %}
+                    </h2>
+                    
+                    <div class="embed-container mb-6 shadow-lg rounded-lg overflow-hidden border border-gray-700">
+                        <iframe src="https://www.youtube.com/embed/{{ current_video }}" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="flex justify-between">
+                        <button id="prev-video" class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-md transition-colors">
+                            <i class="fas fa-arrow-left mr-2"></i> Previous Video
+                        </button>
+                        <button id="next-video" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md transition-colors">
+                            Next Video <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">About LearnEz</h3>
+                    <p>An AI-powered math learning platform that combines interactive tools with personalized tutoring to make mathematics accessible and engaging for everyone.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Features</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/tutor" class="hover:text-blue-400 transition-colors">AI Math Tutor</a></li>
+                        <li><a href="/whiteboard" class="hover:text-blue-400 transition-colors">Interactive Whiteboard</a></li>
+                        <li><a href="/graphing" class="hover:text-blue-400 transition-colors">Graph Simulator</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Documentation</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Tutorial Videos</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Math Topics</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Connect</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">GitHub</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Twitter</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Discord Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2024 LearnEz. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const topic = '{{ topic }}';
+            const videoItems = document.querySelectorAll('.video-item');
+            const checkboxes = document.querySelectorAll('.custom-checkbox');
+            const prevButton = document.getElementById('prev-video');
+            const nextButton = document.getElementById('next-video');
+            const progressFill = document.querySelector('.progress-fill');
+            
+            // Function to update the video player
+            function loadVideo(videoId) {
+                const iframe = document.querySelector('.embed-container iframe');
+                iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                
+                // Update active class
+                videoItems.forEach(item => {
+                    if (item.dataset.videoId === videoId) {
+                        item.classList.add('active');
+                        // Update video title
+                        const videoTitle = item.querySelector('.video-title').textContent;
+                        document.querySelector('.video-player h2').textContent = videoTitle;
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+                
+                // Update server with current video
+                updateProgress(videoId, false);
+            }
+            
+            // Function to update progress on the server
+            function updateProgress(videoId, completed) {
+                fetch('/update_progress', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        topic: topic,
+                        video_id: videoId,
+                        completed: completed
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Update progress bar
+                        progressFill.style.width = `${data.progress_percentage}%`;
+                        document.querySelector('.progress-bar + span').textContent = `${data.progress_percentage}% Complete`;
+                    }
+                })
+                .catch(error => console.error('Error updating progress:', error));
+            }
+            
+            // Video item click event
+            videoItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Don't trigger if checkbox was clicked
+                    if (e.target.classList.contains('custom-checkbox')) return;
+                    
+                    const videoId = this.dataset.videoId;
+                    loadVideo(videoId);
+                });
+            });
+            
+            // Checkbox click event
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const videoId = this.dataset.videoId;
+                    const completed = this.checked;
+                    
+                    // Update UI
+                    const videoItem = this.closest('.video-item');
+                    if (completed) {
+                        videoItem.classList.add('completed');
+                    } else {
+                        videoItem.classList.remove('completed');
+                    }
+                    
+                    // Update server
+                    updateProgress(videoId, completed);
+                });
+            });
+            
+            // Previous button click
+            prevButton.addEventListener('click', function() {
+                const currentVideo = document.querySelector('.video-item.active');
+                if (currentVideo && currentVideo.previousElementSibling) {
+                    const prevVideo = currentVideo.previousElementSibling;
+                    const videoId = prevVideo.dataset.videoId;
+                    loadVideo(videoId);
+                }
+            });
+            
+            // Next button click
+            nextButton.addEventListener('click', function() {
+                const currentVideo = document.querySelector('.video-item.active');
+                if (currentVideo && currentVideo.nextElementSibling) {
+                    const nextVideo = currentVideo.nextElementSibling;
+                    const videoId = nextVideo.dataset.videoId;
+                    loadVideo(videoId);
+                }
+            });
+            
+            // Disable prev/next buttons if at start/end
+            function updateNavigationButtons() {
+                const currentVideo = document.querySelector('.video-item.active');
+                if (currentVideo) {
+                    prevButton.disabled = !currentVideo.previousElementSibling;
+                    nextButton.disabled = !currentVideo.nextElementSibling;
+                    
+                    prevButton.classList.toggle('opacity-50', prevButton.disabled);
+                    nextButton.classList.toggle('opacity-50', nextButton.disabled);
+                }
+            }
+            
+            // Initial update of navigation buttons
+            updateNavigationButtons();
+        });
+    </script>
+</body>
+</html>
